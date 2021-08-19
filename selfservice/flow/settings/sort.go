@@ -16,23 +16,23 @@ func sortNodes(n node.Nodes, schemaRef string) error {
 			node.WebAuthnGroup,
 			node.TOTPGroup,
 		}),
-		//node.SortUseOrderAppend([]string{
-		//	// Lookup
-		//	node.LookupReveal,
-		//	node.LookupRegenerate,
-		//	node.LookupCodes,
-		//	node.LookupConfirm,
-		//
-		//	// Lookup
-		//	node.WebAuthnRemove,
-		//	node.WebAuthnRegisterDisplayName,
-		//	node.WebAuthnRegister,
-		//
-		//	// TOTP
-		//	node.TOTPSecretKey,
-		//	node.TOTPQR,
-		//	node.TOTPUnlink,
-		//	node.TOTPCode,
-		//}),
+		node.SortUseOrderAppend([]string{
+			// Lookup
+			node.LookupReveal,
+			node.LookupRegenerate,
+			node.LookupCodes,
+			node.LookupConfirm,
+
+			// Lookup
+			node.WebAuthnRemove,
+			node.WebAuthnRegisterDisplayName,
+			node.WebAuthnRegister,
+
+			// TOTP
+			node.TOTPSecretKey,
+			node.TOTPQR,
+			node.TOTPUnlink,
+			node.TOTPCode,
+		}),
 	)
 }
