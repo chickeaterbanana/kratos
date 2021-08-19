@@ -219,9 +219,9 @@ func TestSettingsStrategy(t *testing.T) {
 			expected json.RawMessage
 		}{
 			{agent: "password", expected: json.RawMessage(expectedPasswordFields)},
-			{agent: "oryer", expected: json.RawMessage( expectedOryerFields)},
-			{agent: "githuber", expected: json.RawMessage( expectedGithuberFields)},
-			{agent: "multiuser", expected: json.RawMessage( multiuserFields)},
+			{agent: "oryer", expected: json.RawMessage(expectedOryerFields)},
+			{agent: "githuber", expected: json.RawMessage(expectedGithuberFields)},
+			{agent: "multiuser", expected: json.RawMessage(multiuserFields)},
 		} {
 			t.Run("agent="+tc.agent, func(t *testing.T) {
 				rs := nprSDK(t, agents[tc.agent], "", time.Hour)

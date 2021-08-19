@@ -177,11 +177,11 @@ func getStringSliceIndexOf(needle []string, haystack string) int {
 }
 
 type sortOptions struct {
-	orderByGroups   []string
-	schemaRef       string
-	keysInOrder     []string
-	keysInOrderAppend     []string
-	keysInOrderPost func([]string) []string
+	orderByGroups     []string
+	schemaRef         string
+	keysInOrder       []string
+	keysInOrderAppend []string
+	keysInOrderPost   func([]string) []string
 }
 
 type SortOption func(*sortOptions)
