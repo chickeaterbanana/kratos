@@ -180,6 +180,7 @@ type sortOptions struct {
 	orderByGroups   []string
 	schemaRef       string
 	keysInOrder     []string
+	keysInOrderAppend     []string
 	keysInOrderPost func([]string) []string
 }
 
@@ -205,6 +206,11 @@ func SortUseOrder(keysInOrder []string) func(*sortOptions) {
 		options.keysInOrder = keysInOrder
 	}
 }
+func SortUseOrderAppend(keysInOrder []string) func(*sortOptions) {
+	return func(options *sortOptions) {
+		options.keysInOrderAppend = keysInOrder
+	}
+}
 
 func SortUpdateOrder(f func([]string) []string) func(*sortOptions) {
 	return func(options *sortOptions) {
@@ -225,6 +231,7 @@ func (n Nodes) SortBySchema(opts ...SortOption) error {
 		}
 
 		o.keysInOrder = append(o.keysInOrder, schemaKeys...)
+		o.keysInOrder = append(o.keysInOrder, o.keysInOrderAppend...)
 	}
 
 	if o.keysInOrderPost != nil {
