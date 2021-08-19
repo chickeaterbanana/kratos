@@ -231,12 +231,13 @@ func (n Nodes) SortBySchema(opts ...SortOption) error {
 		}
 
 		o.keysInOrder = append(o.keysInOrder, schemaKeys...)
-		o.keysInOrder = append(o.keysInOrder, o.keysInOrderAppend...)
 	}
 
 	if o.keysInOrderPost != nil {
 		o.keysInOrder = o.keysInOrderPost(o.keysInOrder)
 	}
+
+	o.keysInOrder = append(o.keysInOrder, o.keysInOrderAppend...)
 
 	getKeyPosition := func(node *Node) int {
 		lastPrefix := len(o.keysInOrder)

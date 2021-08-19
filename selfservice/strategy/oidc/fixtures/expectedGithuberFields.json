@@ -5,7 +5,7 @@
     "attributes": {
       "name": "csrf_token",
       "type": "hidden",
-      "value": "`",
+      "value": "ZDFrZWhnMzhueXNtMjk4N3NmYnRrcXhpc3FvZXRkMHQ=",
       "required": true,
       "disabled": false
     },
@@ -18,7 +18,7 @@
     "attributes": {
       "name": "traits.email",
       "type": "email",
-      "value": "hackerman+github@ory.sh",
+      "value": "hackerman+github+708b53ae-dbef-489a-a5cf-e829acea40c4@ory.sh",
       "disabled": false
     },
     "messages": [],
@@ -57,24 +57,6 @@
     "type": "input",
     "group": "password",
     "attributes": {
-      "name": "password",
-      "type": "password",
-      "required": true,
-      "disabled": false
-    },
-    "messages": [],
-    "meta": {
-      "label": {
-        "id": 1070001,
-        "text": "Password",
-        "type": "info"
-      }
-    }
-  },
-  {
-    "type": "input",
-    "group": "password",
-    "attributes": {
       "name": "method",
       "type": "submit",
       "value": "password",
@@ -85,6 +67,24 @@
       "label": {
         "id": 1070003,
         "text": "Save",
+        "type": "info"
+      }
+    }
+  },
+  {
+    "type": "input",
+    "group": "password",
+    "attributes": {
+      "name": "password",
+      "type": "password",
+      "required": true,
+      "disabled": false
+    },
+    "messages": [],
+    "meta": {
+      "label": {
+        "id": 1070001,
+        "text": "Password",
         "type": "info"
       }
     }
