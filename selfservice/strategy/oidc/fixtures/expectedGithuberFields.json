@@ -1,49 +1,48 @@
 [
   {
-    "type": "input",
-    "group": "default",
     "attributes": {
+      "disabled": false,
       "name": "csrf_token",
-      "type": "hidden",
-      "value": "ZDFrZWhnMzhueXNtMjk4N3NmYnRrcXhpc3FvZXRkMHQ=",
       "required": true,
-      "disabled": false
+      "type": "hidden",
+      "value": "MTZ4M3k1ZHc2NGhkb2U5Zm5leDZmbDlvYTYxY3ExYXM="
     },
+    "group": "default",
     "messages": [],
-    "meta": {}
+    "meta": {},
+    "type": "input"
   },
   {
-    "type": "input",
-    "group": "profile",
     "attributes": {
+      "disabled": false,
       "name": "traits.email",
       "type": "email",
-      "value": "hackerman+github+708b53ae-dbef-489a-a5cf-e829acea40c4@ory.sh",
-      "disabled": false
+      "value": "hackerman+github+1523952a-ef47-4e01-ad38-b976efb08b90@ory.sh"
     },
+    "group": "profile",
     "messages": [],
-    "meta": {}
+    "meta": {},
+    "type": "input"
   },
   {
-    "type": "input",
-    "group": "profile",
     "attributes": {
+      "disabled": false,
       "name": "traits.name",
-      "type": "text",
-      "disabled": false
+      "type": "text"
     },
-    "messages": [],
-    "meta": {}
-  },
-  {
-    "type": "input",
     "group": "profile",
+    "messages": [],
+    "meta": {},
+    "type": "input"
+  },
+  {
     "attributes": {
+      "disabled": false,
       "name": "method",
       "type": "submit",
-      "value": "profile",
-      "disabled": false
+      "value": "profile"
     },
+    "group": "profile",
     "messages": [],
     "meta": {
       "label": {
@@ -51,35 +50,17 @@
         "text": "Save",
         "type": "info"
       }
-    }
-  },
-  {
-    "type": "input",
-    "group": "password",
-    "attributes": {
-      "name": "method",
-      "type": "submit",
-      "value": "password",
-      "disabled": false
     },
-    "messages": [],
-    "meta": {
-      "label": {
-        "id": 1070003,
-        "text": "Save",
-        "type": "info"
-      }
-    }
+    "type": "input"
   },
   {
-    "type": "input",
-    "group": "password",
     "attributes": {
+      "disabled": false,
       "name": "password",
-      "type": "password",
       "required": true,
-      "disabled": false
+      "type": "password"
     },
+    "group": "password",
     "messages": [],
     "meta": {
       "label": {
@@ -87,69 +68,88 @@
         "text": "Password",
         "type": "info"
       }
-    }
+    },
+    "type": "input"
   },
   {
-    "type": "input",
-    "group": "oidc",
     "attributes": {
-      "name": "unlink",
+      "disabled": false,
+      "name": "method",
       "type": "submit",
-      "value": "github",
-      "disabled": false
+      "value": "password"
     },
+    "group": "password",
     "messages": [],
     "meta": {
       "label": {
-        "id": 1050003,
-        "text": "Unlink github",
-        "type": "info",
+        "id": 1070003,
+        "text": "Save",
+        "type": "info"
+      }
+    },
+    "type": "input"
+  },
+  {
+    "attributes": {
+      "disabled": false,
+      "name": "unlink",
+      "type": "submit",
+      "value": "github"
+    },
+    "group": "oidc",
+    "messages": [],
+    "meta": {
+      "label": {
         "context": {
           "provider": "github"
-        }
+        },
+        "id": 1050003,
+        "text": "Unlink github",
+        "type": "info"
       }
-    }
+    },
+    "type": "input"
   },
   {
-    "type": "input",
-    "group": "oidc",
     "attributes": {
+      "disabled": false,
       "name": "link",
       "type": "submit",
-      "value": "google",
-      "disabled": false
+      "value": "google"
     },
+    "group": "oidc",
     "messages": [],
     "meta": {
       "label": {
-        "id": 1050002,
-        "text": "Link google",
-        "type": "info",
         "context": {
           "provider": "google"
-        }
+        },
+        "id": 1050002,
+        "text": "Link google",
+        "type": "info"
       }
-    }
+    },
+    "type": "input"
   },
   {
-    "type": "input",
-    "group": "oidc",
     "attributes": {
+      "disabled": false,
       "name": "unlink",
       "type": "submit",
-      "value": "ory",
-      "disabled": false
+      "value": "ory"
     },
+    "group": "oidc",
     "messages": [],
     "meta": {
       "label": {
-        "id": 1050003,
-        "text": "Unlink ory",
-        "type": "info",
         "context": {
           "provider": "ory"
-        }
+        },
+        "id": 1050003,
+        "text": "Unlink ory",
+        "type": "info"
       }
-    }
+    },
+    "type": "input"
   }
 ]

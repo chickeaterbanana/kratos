@@ -10,11 +10,9 @@ import (
 	"testing"
 	"time"
 
+	kratos "github.com/ory/kratos-client-go"
 	"github.com/ory/kratos/ui/container"
 	"github.com/ory/x/assertx"
-	"github.com/ory/x/jsonx"
-
-	kratos "github.com/ory/kratos-client-go"
 
 	"github.com/ory/kratos/ui/node"
 
@@ -220,10 +218,10 @@ func TestSettingsStrategy(t *testing.T) {
 			agent    string
 			expected json.RawMessage
 		}{
-			{agent: "password", expected: json.RawMessage(jsonx.TestMarshalJSONString(t, expectedPasswordFields))},
-			{agent: "oryer", expected: json.RawMessage(jsonx.TestMarshalJSONString(t, expectedOryerFields))},
-			{agent: "githuber", expected: json.RawMessage(jsonx.TestMarshalJSONString(t, expectedGithuberFields))},
-			{agent: "multiuser", expected: json.RawMessage(jsonx.TestMarshalJSONString(t, multiuserFields))},
+			{agent: "password", expected: json.RawMessage(expectedPasswordFields)},
+			{agent: "oryer", expected: json.RawMessage( expectedOryerFields)},
+			{agent: "githuber", expected: json.RawMessage( expectedGithuberFields)},
+			{agent: "multiuser", expected: json.RawMessage( multiuserFields)},
 		} {
 			t.Run("agent="+tc.agent, func(t *testing.T) {
 				rs := nprSDK(t, agents[tc.agent], "", time.Hour)
@@ -290,8 +288,8 @@ func TestSettingsStrategy(t *testing.T) {
 				assert.Contains(t, gjson.GetBytes(body, "ui.action").String(), publicTS.URL+settings.RouteSubmitFlow+"?flow=")
 
 				// The original options to link google and github are still there
-				assertx.EqualAsJSON(t, expectedFields,
-					json.RawMessage(gjson.GetBytes(body, `ui.nodes`).Raw), "%s", body)
+				assertx.EqualAsJSONExcept(t, expectedFields,
+					json.RawMessage(gjson.GetBytes(body, `ui.nodes`).Raw), []string{"0.attributes.value", "1.attributes.value"}, "%s", body)
 
 				assert.Contains(t, gjson.GetBytes(body, `ui.messages.0.text`).String(),
 					"can not unlink non-existing OpenID Connect")
@@ -375,7 +373,7 @@ func TestSettingsStrategy(t *testing.T) {
 				assert.Contains(t, gjson.GetBytes(body, "ui.action").String(), publicTS.URL+settings.RouteSubmitFlow+"?flow=")
 
 				// The original options to link google and github are still there
-				assertx.EqualAsJSON(t, expectedFields, json.RawMessage(gjson.GetBytes(body, `ui.nodes`).Raw))
+				assertx.EqualAsJSONExcept(t, expectedFields, json.RawMessage(gjson.GetBytes(body, `ui.nodes`).Raw), []string{"0.attributes.value", "1.attributes.value"})
 
 				assert.Contains(t, gjson.GetBytes(body, `ui.messages.0.text`).String(),
 					"can not link unknown or already existing OpenID Connect connection")
@@ -448,7 +446,7 @@ func TestSettingsStrategy(t *testing.T) {
 			require.NoError(t, err)
 			require.EqualValues(t, settings.StateSuccess, updatedFlowSDK.State)
 
-			assertx.EqualAsJSON(t, json.RawMessage(newConnectionFields), originalFlow.Ui.Nodes)
+			assertx.EqualAsJSONExcept(t, json.RawMessage(newConnectionFields), originalFlow.Ui.Nodes, []string{"0.attributes.value", "1.attributes.value"})
 
 			expected := newAnotherConnectionFields
 			assertx.EqualAsJSON(t, expected, json.RawMessage(gjson.GetBytes(updatedFlow, "ui.nodes").Raw), res.Request.URL)
@@ -471,7 +469,7 @@ func TestSettingsStrategy(t *testing.T) {
 			require.NoError(t, err)
 			require.EqualValues(t, settings.StateSuccess, rs.State)
 
-			assertx.EqualAsJSON(t, json.RawMessage(linkConnectionNoCredentials), rs.Ui.Nodes)
+			assertx.EqualAsJSONExcept(t, json.RawMessage(linkConnectionNoCredentials), rs.Ui.Nodes, []string{"0.attributes.value", "1.attributes.value"})
 
 			checkCredentials(t, true, users[agent].ID, provider, subject)
 		})
