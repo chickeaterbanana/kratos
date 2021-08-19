@@ -448,7 +448,7 @@ func TestSettingsStrategy(t *testing.T) {
 			require.NoError(t, err)
 			require.EqualValues(t, settings.StateSuccess, updatedFlowSDK.State)
 
-			assertx.EqualAsJSON(t, newConnectionFields, originalFlow.Ui.Nodes)
+			assertx.EqualAsJSON(t, json.RawMessage(newConnectionFields), originalFlow.Ui.Nodes)
 
 			expected := newAnotherConnectionFields
 			assertx.EqualAsJSON(t, expected, json.RawMessage(gjson.GetBytes(updatedFlow, "ui.nodes").Raw), res.Request.URL)
